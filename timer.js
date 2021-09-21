@@ -3,10 +3,18 @@ var submitButton = document.getElementById("submitButton");
 var eventsList = document.getElementById("timestampsList");
 var timeStops = [];
 
+function fixIphone(time) {
+  time += "";
+  if (String(time).length === "5") {
+    return "00:" + time;
+  }
+  return time;
+}
+
 function createListElement() {
   var li = document.createElement("li");
-  li.classList.add(timerInputField.value);
-  li.appendChild(document.createTextNode(timerInputField.value));
+  li.classList.add(fixIphone(timerInputField.value));
+  li.appendChild(document.createTextNode(fixIphone(timerInputField.value)));
 
   //addDisabledAfterClick(li);
   addButton(li);
@@ -52,7 +60,7 @@ function addButton(element) {
 function processInputedTime() {
   createListElement();
 
-  timeStops.push(timerInputField.value);
+  timeStops.push(fixIphone(timerInputField.value));
   timerInputField.value = "00:00:00";
 }
 
