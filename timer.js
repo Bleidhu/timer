@@ -141,3 +141,12 @@ function handleFiles() {
     audio = new Audio("./Gong.wav");
   }
 }
+
+var audioStop = document.getElementById("audioStop");
+
+function stopAudio() {
+  audio.pause();
+  audio.currentTime = 0;
+}
+
+audioStop.addEventListener("click", stopAudio);
