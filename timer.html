@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="pl">
+
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Timer debatowy</title>
+</head>
+
+<body>
+	<form>
+		<input type="time" id="timerInput" name="timerInput" step="1" value="00:00:00">
+	</form>
+	<button id="submitButton">Add timestamp</button>
+
+	<ol id="timestampsList">
+	</ol>
+	<button id="startStopButton">Start</button>
+	<button id="resetButton">Reset</button>
+
+	<div><label id="hours">00</label>:<label id="minutes">00</label>:<label id="seconds">00</label></div>
+	<input type="file" id="audioInput" accept="audio/*">
+	<script type="text/javascript" src="./timer.js"></script>
+</body>
+
+</html>
