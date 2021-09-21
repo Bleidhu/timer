@@ -136,7 +136,9 @@ function handleFiles() {
       false
     );
     //try {
-    reader.readAsDataURL(fileList[0]);
+    if (fileList[0]) {
+      reader.readAsDataURL(fileList[0]);
+    }
   } catch {
     audio = new Audio("./Gong.wav");
   }
@@ -150,3 +152,11 @@ function stopAudio() {
 }
 
 audioStop.addEventListener("click", stopAudio);
+
+var testGong = document.getElementById("testGong");
+
+function playSound() {
+  audio.play();
+}
+
+testGong.addEventListener("click", playSound);
