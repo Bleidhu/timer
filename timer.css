@@ -1,0 +1,68 @@
+/* E4572E 29335c F3A712 A8C686 669bbc  */
+
+body {
+  background-color: #221f1f;
+  color: #e50914;
+  font-weight: bold;
+  font-family: "Courier New", Courier, monospace;
+  font-size: 1.5rem;
+  border-radius: 8px;
+}
+#container {
+  display: flex;
+  flex-wrap: wrap;
+  flex-flow: column;
+  align-items: center;
+}
+#timerInput {
+  font-size: 1.5rem;
+  background-color: #f5f5f1; /* Green */
+  border: none;
+  color: #e50914;
+  /* padding: 15px 32px; */
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+}
+button {
+  font-size: 1.5rem;
+  background-color: #f5f5f1; /* Green */
+  border: none;
+  color: #e50914;
+  padding: 0.25rem;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  border-radius: 8px;
+}
+input {
+  font-size: 1.5rem;
+  background-color: #f5f5f1; /* Green */
+  border: none;
+  color: #e50914;
+  padding: 0.25rem;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+}
+input::-webkit-file-upload-button {
+  visibility: hidden;
+}
+input {
+  font-size: 1.5rem;
+  background-color: #f5f5f1; /* Green */
+  border: none;
+  color: #e50914;
+  padding: 0.25rem;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  border-radius: 8px;
+}
+ol {
+  font-size: 1rem;
+}
+ol button {
+  font-size: 1rem;
+  padding: 0.25rem;
+}
