@@ -5,7 +5,7 @@ var timeStops = [];
 
 function fixIphone(time) {
   time += "";
-  if (String(time).length === "5") {
+  if (String(time).length === 5) {
     return "00:" + time;
   }
   return time;
