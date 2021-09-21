@@ -50,8 +50,6 @@ function addButton(element) {
 // });
 
 function processInputedTime() {
-  alert(timerInputField.value);
-
   createListElement();
 
   timeStops.push(timerInputField.value);
@@ -126,8 +124,20 @@ resetButton.addEventListener("click", resetTimer);
 const inputElement = document.getElementById("audioInput");
 inputElement.addEventListener("change", handleFiles, false);
 function handleFiles() {
-  const fileList = this.files; /* now you can work with the file list */
   try {
-    audio = new Audio(fileList[0]);
-  } catch {}
+    const fileList = this.files;
+    var reader = new FileReader(); /* now you can work with the file list */
+    reader.addEventListener(
+      "load",
+      function () {
+        // change the preview's src to be the "result" of reading the uploaded file (below)
+        audio = new Audio(reader.result);
+      },
+      false
+    );
+    //try {
+    reader.readAsDataURL(fileList[0]);
+  } catch {
+    audio = new Audio("./Gong.wav");
+  }
 }
