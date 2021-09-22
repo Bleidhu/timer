@@ -114,7 +114,6 @@ function setTime() {
         ][1]
       );
       audio.play();
-      audio.setAudio("./Gong.wav");
     }
   }
 }
