@@ -6,9 +6,9 @@ body {
   font-weight: bold;
   font-family: "Courier New", Courier, monospace;
   font-size: 1.5rem;
-  border-radius: 8px;
 }
 #container {
+  width: 100%;
   display: flex;
   flex-wrap: wrap;
   flex-flow: column;
@@ -23,41 +23,29 @@ body {
   text-align: center;
   text-decoration: none;
   display: inline-block;
-}
-button {
-  font-size: 1.5rem;
-  background-color: #f5f5f1; /* Green */
-  border: none;
-  color: #e50914;
-  padding: 0.25rem;
-  text-align: center;
-  text-decoration: none;
-  display: inline-block;
   border-radius: 8px;
 }
+input[type="time"]::-webkit-calendar-picker-indicator {
+  background: none;
+  display: none;
+}
+button,
 input {
   font-size: 1.5rem;
-  background-color: #f5f5f1; /* Green */
-  border: none;
-  color: #e50914;
+  background-color: #221f1f; /* Green */
+  border: 2px;
+  color: #f5f5f1;
+  border-color: #e50914;
+  border-style: solid;
   padding: 0.25rem;
   text-align: center;
   text-decoration: none;
   display: inline-block;
+  margin: 0.3rem;
 }
+
 input::-webkit-file-upload-button {
   visibility: hidden;
-}
-input {
-  font-size: 1.5rem;
-  background-color: #f5f5f1; /* Green */
-  border: none;
-  color: #e50914;
-  padding: 0.25rem;
-  text-align: center;
-  text-decoration: none;
-  display: inline-block;
-  border-radius: 8px;
 }
 ol {
   font-size: 1rem;
@@ -65,4 +53,14 @@ ol {
 ol button {
   font-size: 1rem;
   padding: 0.25rem;
+  margin: 0.2rem;
+}
+
+#audioInput {
+  width: 90%;
+  font-size: 1rem;
+}
+.informative {
+  font-size: 1rem;
+  color: #f5f5f1;
 }
