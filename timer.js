@@ -50,6 +50,9 @@ function addButton(element) {
     btnTmp.parentElement.remove();
     timeStops.splice(timeStops.findIndex(isEqual, btnTmp.parentElement), 1);
     audioToBeChanged.setAttribute("max", timeStops.length);
+    if (timeStops.length === 0) {
+      audioToBeChanged.setAttribute("disabled", true);
+    }
   });
   element.appendChild(btnTmp);
 }
@@ -65,6 +68,7 @@ function processInputedTime() {
   timeStops.push([fixIphone(timerInputField.value), "./Gong.wav"]);
   timerInputField.value = "00:00:00";
   audioToBeChanged.setAttribute("max", timeStops.length);
+  audioToBeChanged.removeAttribute("disabled");
 }
 
 var audio = new Audio("./Gong.wav");
@@ -149,8 +153,14 @@ resetButton.addEventListener("click", resetTimer);
 
 const inputElement = document.getElementById("audioInput");
 const setAudio = document.querySelector("#setAudio");
-inputElement.addEventListener("change", handleFiles, false);
+inputElement.addEventListener("change", activateButton, false);
 setAudio.addEventListener("click", handleFiles, false);
+
+function activateButton() {
+  if (inputElement.files) {
+    setAudio.removeAttribute("disabled");
+  }
+}
 
 function handleFiles() {
   try {
