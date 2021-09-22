@@ -2,6 +2,7 @@ var timerInputField = document.getElementById("timerInput");
 var submitButton = document.getElementById("submitButton");
 var eventsList = document.getElementById("timestampsList");
 var timeStops = [];
+var audioToBeChanged = document.querySelector("#audioToBeChanged");
 
 function fixIphone(time) {
   time += "";
@@ -39,7 +40,7 @@ function createListElement() {
 //   });
 // }
 function isEqual(element) {
-  return element === this.className;
+  return element[0] === this.className;
 }
 
 function addButton(element) {
@@ -48,6 +49,7 @@ function addButton(element) {
   btnTmp.addEventListener("click", (event) => {
     btnTmp.parentElement.remove();
     timeStops.splice(timeStops.findIndex(isEqual, btnTmp.parentElement), 1);
+    audioToBeChanged.setAttribute("max", timeStops.length);
   });
   element.appendChild(btnTmp);
 }
@@ -60,8 +62,9 @@ function addButton(element) {
 function processInputedTime() {
   createListElement();
 
-  timeStops.push(fixIphone(timerInputField.value));
+  timeStops.push([fixIphone(timerInputField.value), "./Gong.wav"]);
   timerInputField.value = "00:00:00";
+  audioToBeChanged.setAttribute("max", timeStops.length);
 }
 
 var audio = new Audio("./Gong.wav");
@@ -83,14 +86,29 @@ function setTime() {
     hoursLabel.innerHTML = pad(parseInt(totalSeconds / 3600));
 
     if (
-      timeStops.includes(
-        hoursLabel.innerText +
-          ":" +
-          minutesLabel.innerText +
-          ":" +
-          secondsLabel.innerText
-      )
+      timeStops.find(
+        (element) =>
+          element[0] ===
+          hoursLabel.innerText +
+            ":" +
+            minutesLabel.innerText +
+            ":" +
+            secondsLabel.innerText
+      ) !== undefined
     ) {
+      audio = new Audio(
+        timeStops[
+          timeStops.findIndex(
+            (element) =>
+              element[0] ===
+              hoursLabel.innerText +
+                ":" +
+                minutesLabel.innerText +
+                ":" +
+                secondsLabel.innerText
+          )
+        ][1]
+      );
       audio.play();
     }
   }
@@ -130,16 +148,19 @@ function resetTimer() {
 resetButton.addEventListener("click", resetTimer);
 
 const inputElement = document.getElementById("audioInput");
+const setAudio = document.querySelector("#setAudio");
 inputElement.addEventListener("change", handleFiles, false);
+setAudio.addEventListener("click", handleFiles, false);
+
 function handleFiles() {
   try {
-    const fileList = this.files;
+    const fileList = inputElement.files;
     var reader = new FileReader(); /* now you can work with the file list */
     reader.addEventListener(
       "load",
       function () {
         // change the preview's src to be the "result" of reading the uploaded file (below)
-        audio = new Audio(reader.result);
+        timeStops[audioToBeChanged.value - 1][1] = reader.result;
       },
       false
     );
@@ -148,7 +169,7 @@ function handleFiles() {
       reader.readAsDataURL(fileList[0]);
     }
   } catch {
-    audio = new Audio("./Gong.wav");
+    timeStops[audioToBeChanged.value][1] = "./Gong.wav";
   }
 }
 
